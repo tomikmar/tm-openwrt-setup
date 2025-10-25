@@ -463,6 +463,8 @@ Ports used by wsdd2:
     opkg update
     # Network monitoring
     opkg install ifstat iftop nload bmon
+    # Tools
+    opkg install diffutils
 
 
 
