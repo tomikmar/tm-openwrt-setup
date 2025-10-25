@@ -464,7 +464,26 @@ Ports used by wsdd2:
     # Network monitoring
     opkg install ifstat iftop nload bmon
     # Tools
-    opkg install diffutils
+    opkg install diffutils usbutils
+
+
+
+## Mount external USB drive
+
+    mkdir -p /mnt/external-disk
+    #
+    uci set fstab.external_disk_usb='mount'
+    uci set fstab.external_disk_usb.target='/mnt/external-disk'
+    # ! block info !
+    uci set fstab.external_disk_usb.uuid='<ID>'
+    uci set fstab.external_disk_usb.fstype='vfat'
+    uci set fstab.external_disk_usb.options='rw,flush,noatime,utf8'
+    uci set fstab.external_disk_usb.enabled='1'
+    #
+    #uci set fstab.@global[0].auto_mount='1'
+    #
+    uci commit fstab
+    /etc/init.d/fstab restart
 
 
 
