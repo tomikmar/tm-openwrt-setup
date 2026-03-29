@@ -427,6 +427,12 @@ Ports used by wsdd2:
     uci set firewall.iot_to_wan.src='iot_zone'
     uci set firewall.iot_to_wan.dest='wan'
 
+    # Allow forwarding from lan to iot_zone
+    uci delete firewall.lan_to_iot
+    uci set firewall.lan_to_iot='forwarding'
+    uci set firewall.lan_to_iot.src='lan'
+    uci set firewall.lan_to_iot.dest='iot_zone'
+
     # Allow DHCP
     uci delete firewall.iot_dhcp_rule
     uci set firewall.iot_dhcp_rule='rule'
