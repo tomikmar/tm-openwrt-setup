@@ -469,7 +469,7 @@ Ports used by wsdd2:
 
     opkg update
     # Network monitoring
-    opkg install ifstat iftop nload bmon
+    opkg install ifstat iftop nload bmon hostapd-utils
     # Tools
     opkg install diffutils usbutils
 
