@@ -406,8 +406,9 @@ Ports used by wsdd2:
     uci set wireless.iot_wifi.encryption='sae-mixed'
     # ! UPDATE !
     uci set wireless.iot_wifi.key='****************'
-    # Disable client isolation on wireless interface
-    uci set wireless.iot_wifi.isolate='0'
+    # Block communication between clients on wireless interface level
+    uci set wireless.iot_wifi.isolate='1'
+    # uci set wireless.iot_wifi.isolate='0' (allow only when needed, e.g. during device setup)
     # Disable Wi-Fi Protected Setup (WPS)
     uci set wireless.iot_wifi.wps='0'
     # Hide network -> NOT SUPPORTED BY MY DEVICES
