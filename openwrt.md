@@ -493,6 +493,13 @@ Ports used by wsdd2:
 
 
 
+## Keep /usr/local/bin during system upgrade
+
+    mkdir -p /usr/local/bin
+    grep -qxF '/usr/local/bin' /etc/sysupgrade.conf || echo '/usr/local/bin' >> /etc/sysupgrade.conf
+
+
+
 ## Tests
 
     nslookup dns.quad9.net
