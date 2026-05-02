@@ -277,7 +277,7 @@ Ports used by wsdd2:
 
 
 
-## Network
+## Main WiFi
 
   * Configure and enable WiFi
     * 'sae-mixed' downgrade is required for my printer
@@ -289,7 +289,7 @@ Ports used by wsdd2:
     ```
   * Improve security
     ```bash
-    Enable PMF (Protected Management Frames)
+    # Enable PMF (Protected Management Frames)
     uci set wireless.default_radio1.ieee80211w='2'
     # Enable OCV (Operating Channel Validation)
     uci set wireless.default_radio1.ocv='1'
