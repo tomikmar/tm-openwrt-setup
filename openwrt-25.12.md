@@ -49,11 +49,14 @@ Tested on OpenWrt 25.12.
     uci show dropbear.@dropbear[0].RootPasswordAuth
     uci show dropbear.@dropbear[0].Interface
     uci show dropbear.@dropbear[0].Port
+    uci show dropbear.@dropbear[0].GatewayPorts
     #
     uci set dropbear.@dropbear[0].PasswordAuth='off'
     uci set dropbear.@dropbear[0].RootPasswordAuth='off'
     uci set dropbear.@dropbear[0].Interface='lan'
     uci set dropbear.@dropbear[0].Port='<SSH_PORT>'
+    # Limit SSH remote port forwarding (-R) to loopback interface only
+    uci set dropbear.@dropbear[0].GatewayPorts='off'
     #
     uci commit dropbear
     /etc/init.d/dropbear restart
@@ -287,7 +290,7 @@ Ports used by wsdd2:
     uci set wireless.radio0.disabled='0'
     uci set wireless.radio1.disabled='0'
     ```
-  * Improve security - main Wifi 0 witn increased compatibility
+  * Improve security - main Wifi 0 with increased compatibility
     ```bash
     # Disable Wi-Fi Protected Setup (WPS)
     uci set wireless.default_radio0.wps='0'
