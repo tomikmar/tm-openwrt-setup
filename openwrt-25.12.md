@@ -287,8 +287,15 @@ Ports used by wsdd2:
     uci set wireless.radio0.disabled='0'
     uci set wireless.radio1.disabled='0'
     ```
-  * Improve security
+  * Improve security - main Wifi 0 witn increased compatibility
     ```bash
+    # Disable Wi-Fi Protected Setup (WPS)
+    uci set wireless.default_radio0.wps='0'
+    ```
+  * Improve security - main Wifi 1 with increased security
+    ```bash
+    # Disable Wi-Fi Protected Setup (WPS)
+    uci set wireless.default_radio1.wps='0'
     # Enable PMF (Protected Management Frames)
     uci set wireless.default_radio1.ieee80211w='2'
     # Enable OCV (Operating Channel Validation)
