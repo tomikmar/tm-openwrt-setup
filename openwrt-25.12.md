@@ -239,7 +239,7 @@ Ports used by wsdd2:
     uci set wifi_schedule.@global[0].unload_modules='0'  
     uci set wifi_schedule.@global[0].recheck_interval='10'
     uci set wifi_schedule.@global[0].modules_retries='10'
-#       option ignore_stations 'AA:AA:AA:AA:AA:AA BB:BB:BB:BB:BB:BB'
+    # option ignore_stations 'AA:AA:AA:AA:AA:AA BB:BB:BB:BB:BB:BB'
 
     uci set wifi_schedule.Businesshours=entry
     uci set wifi_schedule.Businesshours.enabled='1'
@@ -282,6 +282,21 @@ Ports used by wsdd2:
   * Configure and enable WiFi
     * 'sae-mixed' downgrade is required for my printer
   * Wireless / Edit / Wireless security / Encryption / sae-mixed | sae
+  * Enable WiFi after restart
+    ```bash
+    uci set wireless.radio0.disabled='0'
+    uci set wireless.radio1.disabled='0'
+    ```
+  * Improve security
+    ```bash
+    Enable PMF (Protected Management Frames)
+    uci set wireless.default_radio1.ieee80211w='2'
+    # Enable OCV (Operating Channel Validation)
+    uci set wireless.default_radio1.ocv='1'
+
+    uci commit wireless
+    wifi reload
+    ```
 
 
 
