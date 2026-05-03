@@ -294,12 +294,14 @@ Ports used by wsdd2:
     ```bash
     # Disable Wi-Fi Protected Setup (WPS)
     uci set wireless.default_radio0.wps='0'
+    # Set PMF (Protected Management Frames) as optional
+    uci set wireless.default_radio0.ieee80211w='1'
     ```
   * Improve security - main Wifi 1 with increased security
     ```bash
     # Disable Wi-Fi Protected Setup (WPS)
     uci set wireless.default_radio1.wps='0'
-    # Enable PMF (Protected Management Frames)
+    # Set PMF (Protected Management Frames) as required
     uci set wireless.default_radio1.ieee80211w='2'
     # Enable OCV (Operating Channel Validation)
     uci set wireless.default_radio1.ocv='1'
@@ -507,7 +509,7 @@ Ports used by wsdd2:
     #
     uci set fstab.external_disk_usb='mount'
     uci set fstab.external_disk_usb.target='/mnt/external-disk'
-    # ! block info !
+    # Use command `block info` to find <DISK-ID>
     uci set fstab.external_disk_usb.uuid='<DISK-ID>'
     uci set fstab.external_disk_usb.fstype='vfat'
     uci set fstab.external_disk_usb.options='rw,flush,noatime,utf8'
