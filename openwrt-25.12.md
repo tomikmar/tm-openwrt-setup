@@ -214,6 +214,7 @@ Ports used by wsdd2:
     # Disable IPv6 in kernel
     echo "net.ipv6.conf.all.disable_ipv6=1" >> /etc/sysctl.conf
     echo "net.ipv6.conf.default.disable_ipv6=1" >> /etc/sysctl.conf
+    echo "net.ipv6.conf.lo.disable_ipv6=1" >> /etc/sysctl.conf
     sysctl -p 
  
     # Disable odhcpd service
@@ -231,6 +232,9 @@ Ports used by wsdd2:
     ps | grep odhcpd
     ps | grep odhcp6c
     uci show network.wan6
+
+    # Test
+    ip -6 addr show
 
 
 
@@ -290,21 +294,22 @@ Ports used by wsdd2:
     uci set wireless.radio0.disabled='0'
     uci set wireless.radio1.disabled='0'
     ```
-  * Improve security - main Wifi 0 with increased compatibility
+  * Security config for main Wifi 0 - increased compatibility
     ```bash
     # Disable Wi-Fi Protected Setup (WPS)
     uci set wireless.default_radio0.wps='0'
     # Set PMF (Protected Management Frames) as optional
     uci set wireless.default_radio0.ieee80211w='1'
+    uci set wireless.default_radio0.ocv='0'
     ```
-  * Improve security - main Wifi 1 with increased security
+  * Security config for main Wifi 1 - increased security
     ```bash
     # Disable Wi-Fi Protected Setup (WPS)
     uci set wireless.default_radio1.wps='0'
     # Set PMF (Protected Management Frames) as required
     uci set wireless.default_radio1.ieee80211w='2'
-    # Enable OCV (Operating Channel Validation)
-    uci set wireless.default_radio1.ocv='1'
+    # Disable OCV (Operating Channel Validation): causes OCI bandwidth mismatch (20 MHz vs 40/80 MHz) on one client (5 GHz)
+    uci set wireless.default_radio1.ocv='0'
 
     uci commit wireless
     wifi reload
